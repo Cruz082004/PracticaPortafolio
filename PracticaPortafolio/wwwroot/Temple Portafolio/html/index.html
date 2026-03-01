@@ -122,16 +122,23 @@
             </div>
         </div>
         <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-          <h1 class="fw-light">Cruz Jose Quintero Rodriguez</h1>
-          <h5 class="fg-theme mb-3">Ingeniero en Sistemas Computacionales</h5>
-          <p class="text-muted">con interés en el desarrollo de software y el uso de tecnologías informáticas para resolver problemas. Me considero una persona responsable, con capacidad de aprendizaje continuo, trabajo en equipo y adaptación a nuevos retos tecnológicos.</p>
-          <ul class="theme-list">
-            <li><b>From:</b> Nogales, Sonora,Mexico</li>
-            <li><b>Lives In:</b> Nogales, Sonora,Mexico</li>
-            <li><b>Age:</b> 21</li>
-            <li><b>Gender:</b> Male</li>
-          </ul>
-          <button class="btn btn-theme-outline">Download CV</button>
+            <h1 class="fw-light">Cruz Jose Quintero Rodriguez</h1>
+            <h5 class="fg-theme mb-3">Ingeniero en Sistemas Computacionales</h5>
+            <p class="text-muted">con interés en el desarrollo de software y el uso de tecnologías informáticas para resolver problemas. Me considero una persona responsable, con capacidad de aprendizaje continuo, trabajo en equipo y adaptación a nuevos retos tecnológicos.</p>
+            <ul class="theme-list">
+                <li><b>From:</b> Nogales, Sonora,Mexico</li>
+                <li><b>Lives In:</b> Nogales, Sonora,Mexico</li>
+                <li><b>Age:</b> 21</li>
+                <li><b>Gender:</b> Male</li>
+            </ul>
+            <button class="btn btn-theme-outline" onclick="imprimirImagen()">
+                Download CV
+            </button>
+
+            <img id="imagenCV"
+                 src="../assets/img/work/CV Cruz.png" 
+                 style="display:none;">
+            
         </div>
       </div>
     </div>
@@ -509,6 +516,39 @@
   <script src="../assets/js/topbar-virtual.js"></script>
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script>
-  
+  <script>
+      function imprimirImagen() {
+          const imagen = document.getElementById("imagenCV").src;
+          const ventana = window.open('', '_blank');
+
+          ventana.document.write(`
+      <html>
+        <head>
+          <title>Imprimir CV</title>
+          <style>
+            body {
+              margin: 0;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            img {
+              max-width: 100%;
+              max-height: 100vh;
+            }
+          </style>
+        </head>
+        <body>
+          <img src="${imagen}">
+        </body>
+      </html>
+    `);
+
+          ventana.document.close();
+          ventana.focus();
+          ventana.print();
+          ventana.close();
+      }
+  </script>
 </body>
 </html>
